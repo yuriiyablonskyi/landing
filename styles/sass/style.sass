@@ -1,0 +1,252 @@
+//reset
+*
+  margin: 0
+  padding: 0
+  border: 0
+  font-family: inherit
+  font-size: inherit
+  box-sizing: border-box
+
+a
+  text-decoration: none
+
+li
+  list-style-type: none
+
+button
+  background-color: transparent
+  cursor: pointer
+
+//______
+//vers
+$black: #22272f
+$white: #e9e8e8
+$blue: #2563eb
+$green: #2ac479
+$red: #ef3054
+$slate: #70798f
+$cloud: #adafb4
+
+$transition: all .15s linear
+
+$desktop: 1299px
+$tablet: 991px
+$mobile: 767px
+$small-mobile: 480px
+
+//______
+//mixins
+@mixin font-face($font-family, $url, $weight, $style)
+  @font-face
+    font-family: $font-family
+    src: url('../../assets/fonts/#{$url}.woff2') format('woff2')
+    font-weight: $weight
+    font-display: swap
+    font-style: $style
+
+@mixin border($width, $color, $radius)
+  border: $width solid $color
+  border-radius: $radius
+
+@mixin flex($main-axis, $transverse-axis)
+  display: flex
+  justify-content: $main-axis
+  align-items: $transverse-axis
+
+//______
+//fonts
+@include font-face('DMSans', 'DMSans-Regular', 400, normal)
+@include font-face('DMSans', 'DMSans-Medium', 500, normal)
+@include font-face('DMSans', 'DMSans-Bold', 700, normal)
+
+//______
+//styles
+body
+  background-color: $black
+  font-family: DMSans
+  color: $cloud
+  font-size: 18px
+
+.container
+  max-width: 1400px
+  width: 100%
+  margin: 0 auto
+  padding: 0 30px
+  @media (max-width: $small-mobile)
+    padding: 0 15px
+
+.title
+  text-align: center
+  font-size: 50px
+  margin: 100px 0
+
+.btn
+  color: $green
+  padding: 6px 18px
+  @include border(1px,$green, 5px)
+  transition: $transition
+
+  &:hover
+    border-color: transparent
+    transform: scale(1.1)
+
+.header
+  padding: 20px 0
+
+  &__inner
+    @include flex(space-between, center)
+
+  &__logo
+    display: block
+    width: 80px
+    height: auto
+
+.nav
+  @include flex(space-between, center)
+  @media (max-width: $mobile)
+    display: none
+
+  &.active
+    padding: 70px 0
+    background-color: $white
+    background-color: $slate
+    background-color: $black
+    @include flex(center, center)
+    flex-direction: column
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+
+  &__list
+    margin-right: 80px
+    display: flex
+
+    @media (max-width: $mobile)
+      margin-right: 0
+      margin-bottom: 30px
+      justify-content: center
+      flex-direction: column
+
+  &__item:not(:last-child)
+    margin-right: 25px
+
+    @media (max-width: $mobile)
+      margin-right: 0
+
+  &__item
+    @media (max-width: $mobile)
+      margin-bottom: 10px
+
+  &__link
+    color: $cloud
+    transition: $transition
+
+    &:hover
+      color: $white
+
+.toggle
+  width: 40px
+  height: 30px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding: 5px
+  cursor: pointer
+  display: none
+
+  @media (max-width: $mobile)
+    display: flex
+
+  &.active
+    .toggle__item:nth-child(1)
+      transform: rotate(-45deg) translateX(-13px)
+
+    .toggle__item:nth-child(2)
+      transform: scaleX(0)
+
+    .toggle__item:nth-child(3)
+      transform: rotate(45deg) translateX(-13px)
+
+  &__item
+    width: 100%
+    height: 2px
+    background: $cloud
+    transition: $transition
+
+.authorization
+  z-index: 1
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  min-height: 100vh
+  backdrop-filter: blur(2px)
+  background: rgba($black, 0.9)
+  @include flex(center, center)
+  transform: scale(0)
+  transition: $transition
+
+  &.active
+    transform: scale(1)
+
+  &__form
+    background-color: $black
+    @include border(1px,$green, 15px)
+    padding: 60px
+    min-height: 20px
+    @include flex(space-between, center)
+    flex-direction: column
+
+  &__input
+    background-color: transparent
+    border-bottom: 1px solid $red
+    outline: none
+    color: $cloud
+    padding: 4px 10px
+    margin-bottom: 30px
+    transition: $transition
+
+    &:focus,
+    &:not(:placeholder-shown)
+      border-color: $blue
+
+// .products
+// 		&__inner
+
+.list
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+  @media (max-width: $mobile)
+    justify-content: center
+
+  &__item
+    flex: 0 0 calc(33.33% - 20px)
+    border: 2px solid $cloud
+    padding: 50px 20px
+    margin-bottom: 30px
+    @media (max-width: $mobile)
+      width: 330px
+      flex: none
+
+  &__img
+    display: block
+    width: 290px
+    height: auto
+    margin: 0 auto
+    margin-bottom: 15px
+    border-radius: 5px
+
+  &__title
+    font-size: 20px
+    font-weight: 700
+    color: $white
+    margin-bottom: 20px
+    text-align: center
+
+  &__desc
+    font-size: 16px

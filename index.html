@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./styles/css/style.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+
+        <a href="#">
+          <img src="./assets/img/logo.svg" alt="logo" class="header__logo">
+        </a>
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#" class="nav__link">Page-1</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Page-2</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Page-3</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Page-4</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#" class="nav__link">Page-5</a>
+            </li>
+          </ul>
+          <button class="btn" id="login">Log in</button>
+        </nav>
+
+        <div class="toggle">
+          <div class="toggle__item"></div>
+          <div class="toggle__item"></div>
+          <div class="toggle__item"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="authorization">
+    <form class="authorization__form">
+      <input class="authorization__input" type="text" placeholder="username">
+      <input class="authorization__input" type="password" placeholder="password ">
+      <button class="btn" type="submit" id="close">SIGN IN</button>
+    </form>
+  </div>
+
+  <h1 class="title">Main page</h1>
+
+  <section class="products">
+    <div class="container">
+      <div class="products__inner">
+        <ul class="list"></ul>
+      </div>
+    </div>
+  </section>
+  <script src="./main.js"></script>
+</body>
+
+</html>
